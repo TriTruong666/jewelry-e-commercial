@@ -1,0 +1,45 @@
+.default-modal-cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+
+    .default-modal-container {
+        width: 400px;
+        height: 250px;
+        background: white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        p {
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        p,
+        span {
+            cursor: default;
+        }
+
+        span {
+            margin: 1rem 0;
+            font-size: 6.5rem;
+        }
+
+        .success {
+            color: #00E400;
+        }
+
+        .error {
+            color: #FF0F0F;
+        }
+    }
+}

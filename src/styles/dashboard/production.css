@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.production-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.production-container .inner-production {
+  width: 100%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.production-container .inner-production .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.production-container .inner-production .buttons #delete,
+.production-container .inner-production .buttons #edit {
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+.production-container .inner-production .buttons #delete:hover,
+.production-container .inner-production .buttons #edit:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.production-container .inner-production .buttons .other-btn {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+}
+.production-container .inner-production .buttons .other-btn .search-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+.production-container .inner-production .buttons .other-btn .search-bar ::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.production-container .inner-production .buttons .other-btn .search-bar input,
+.production-container .inner-production .buttons .other-btn .search-bar span,
+.production-container .inner-production .buttons .other-btn .search-bar ::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.production-container .inner-production .buttons .other-btn .search-bar input {
+  padding-left: 5px;
+}
+.production-container .inner-production .buttons .other-btn .search-bar span {
+  padding-left: 10px;
+}
+.production-container .inner-production .product-table {
+  width: 100%;
+  margin: 2.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-spacing: 0;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.production-container .inner-production .product-table thead,
+.production-container .inner-production .product-table tbody {
+  width: 100%;
+}
+.production-container .inner-production .product-table tbody {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+}
+.production-container .inner-production .product-table tbody tr .id {
+  cursor: pointer;
+}
+.production-container .inner-production .product-table tr {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.production-container .inner-production .product-table tr th {
+  padding: 1.5rem 0.5rem;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.production-container .inner-production .product-table tr td {
+  text-align: center;
+  padding: 1rem 0.5rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+}
+.production-container .inner-production .product-table tr th:nth-child(1),
+.production-container .inner-production .product-table tr td:nth-child(1) {
+  grid-column: 1/span 3;
+}
+.production-container .inner-production .product-table tr th:nth-child(2),
+.production-container .inner-production .product-table tr td:nth-child(2) {
+  grid-column: 4/span 3;
+}
+.production-container .inner-production .product-table tr th:nth-child(3),
+.production-container .inner-production .product-table tr td:nth-child(3) {
+  grid-column: 7/span 2;
+}
+.production-container .inner-production .product-table tr th:nth-child(6),
+.production-container .inner-production .product-table tr td:nth-child(6) {
+  grid-column: 11/span 2;
+}/*# sourceMappingURL=production.css.map */

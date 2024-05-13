@@ -1,0 +1,23 @@
+@import "../global/variables.scss";
+
+.addBtn {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: $thin-border;
+    color: rgba(255, 255, 255, .7);
+    border-radius: 20px;
+    transition: .3s ease-in-out;
+
+    p {
+        padding-right: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+.addBtn:hover {
+    background: rgba(255, 255, 255, .1);
+}

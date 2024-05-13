@@ -1,0 +1,60 @@
+@import "../global/variables.scss";
+
+.header-container {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    background: $default-backgr;
+    z-index: 100;
+
+    .header {
+        width: 84%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+
+        a {
+            grid-column: 1 / span 3;
+
+            h2 {
+                font-family: $default-font;
+                font-weight: 500;
+            }
+        }
+
+        .main-nav {
+            grid-column: 4 / span 6;
+            display: flex;
+            justify-content: space-around;
+
+            a {
+                font-weight: 500;
+            }
+
+            a::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 1px;
+                background: #000;
+                transition: width .3s ease-in;
+            }
+
+            a:hover::after {
+                width: 100%;
+            }
+        }
+
+        .second-nav {
+            grid-column: 10 / span 3;
+            display: flex;
+            justify-content: end;
+            column-gap: 3rem;
+            align-items: center;
+        }
+    }
+
+
+}

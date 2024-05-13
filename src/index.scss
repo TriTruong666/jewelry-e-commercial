@@ -1,0 +1,43 @@
+@import "./styles/global/variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $default-font;
+}
+
+img {
+  width: 50%;
+}
+
+#root {
+  width: 100vw;
+  position: relative;
+  background: $default-backgr;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+button,
+select {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+option {
+  background: black;
+}
+
+::placeholder {
+  color: black;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}

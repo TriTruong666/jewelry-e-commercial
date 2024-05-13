@@ -1,0 +1,106 @@
+@import "../global/variables.scss";
+
+.new-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 3.5rem;
+    position: relative;
+    padding-top: 5rem;
+
+    .new-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        strong {
+            text-align: center;
+            color: $font-color1;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-family: $highlight-font;
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-top: 2rem;
+        }
+    }
+
+    .new-slide {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+
+        #slide-btn1 {
+            position: absolute;
+            z-index: 50;
+            top: 47%;
+            left: 92.5%;
+            padding: 15px;
+            font-size: 2rem;
+            color: white;
+            background: black;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+        }
+
+        #slide-btn2 {
+            position: absolute;
+            z-index: 50;
+            top: 47%;
+            left: 4%;
+            padding: 15px;
+            font-size: 2rem;
+            color: white;
+            background: black;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+        }
+
+        #slide-btn1:hover,
+        #slide-btn2:hover {
+            background: transparent;
+            border-color: black;
+            color: black;
+        }
+
+        .slide {
+            width: 85%;
+            display: flex;
+            column-gap: 40px;
+            overflow: auto;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+    }
+}
+
+// .new-container::before {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     content: "";
+//     width: 400px;
+//     height: 100%;
+//     z-index: 2;
+//     background: linear-gradient(to left, rgba(255, 255, 255, 0), white 60%);
+// }
+
+// .new-container::after {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     content: "";
+//     width: 300px;
+//     height: 100%;
+//     z-index: 2;
+
+//     background: linear-gradient(to right, rgba(255, 255, 255, 0), white 60%);
+// }

@@ -1,0 +1,16 @@
+.prim-btn {
+    width: fit-content;
+    padding: 15px 50px;
+    border: 2px solid black;
+    // background: $default-backgr;
+    font-weight: 400;
+    box-shadow: inset 0 0 0 0 black;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.prim-btn:hover {
+    box-shadow: inset 400px 0 0 0 black;
+    color: #F5EEEA;
+}

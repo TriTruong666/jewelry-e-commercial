@@ -1,0 +1,62 @@
+@import "../global/variables.scss";
+
+.subcribe-container {
+    width: 100%;
+    height: 600px;
+    background: $primary-backgr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16rem;
+    row-gap: 2rem;
+
+    strong {
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        width: 32%;
+        text-align: center;
+        font-family: $highlight-font;
+        font-size: 4.5rem;
+        font-weight: 400;
+    }
+
+    span {
+        width: 28%;
+        text-align: center;
+        color: rgba(0, 0, 0, .6);
+    }
+
+    .subscribe-email {
+        width: 30%;
+        height: 65px;
+        display: flex;
+
+        input {
+            padding: 0 30px;
+            width: 70%;
+            height: 100%;
+            border: 2px solid transparent;
+            background: $collection-backgr;
+            transition: .3s ease-in-out;
+            color: black;
+        }
+
+        input:hover,
+        input:focus {
+            border-color: black;
+        }
+
+        button {
+            width: 30%;
+            height: 100%;
+            background: black;
+            color: white;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+    }
+}

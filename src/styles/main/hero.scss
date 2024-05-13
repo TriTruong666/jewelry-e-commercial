@@ -1,0 +1,52 @@
+@import "../global/variables.scss";
+
+.hero-container {
+    padding-top: 100px;
+    width: 100%;
+    height: 990px;
+    display: flex;
+
+    .hero-content-container {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $primary-backgr;
+
+        .hero-content {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.75rem;
+
+            strong {
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            div {
+                h2 {
+                    font-size: 6rem;
+                    font-weight: 500;
+                    font-family: $highlight-font;
+                }
+            }
+
+            span {
+                width: 65%;
+                color: rgba(0, 0, 0, 0.5);
+                font-weight: 600;
+            }
+        }
+    }
+
+    .hero-img {
+        width: 50%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

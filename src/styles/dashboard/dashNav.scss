@@ -1,0 +1,59 @@
+@import "../global/variables.scss";
+
+.navigation-container {
+    width: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+    .nav-header {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.75rem;
+
+        span {
+            font-size: 1.2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+    }
+
+    .ultilities {
+        display: flex;
+        column-gap: 2rem;
+        align-items: center;
+
+        .search {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 30px;
+            border: $thin-border;
+
+            ::placeholder {
+                color: rgba(255, 255, 255, .5);
+            }
+
+            input {
+                padding-left: 10px;
+                color: white;
+            }
+
+            span {
+                font-size: 1.5rem;
+            }
+        }
+
+        .icon {
+            padding: 10px;
+            border-radius: 50%;
+            border: $thin-border;
+            font-size: 1.5rem;
+        }
+
+    }
+}

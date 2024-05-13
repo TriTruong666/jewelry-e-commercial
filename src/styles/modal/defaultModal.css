@@ -1,0 +1,39 @@
+.default-modal-cover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.default-modal-cover .default-modal-container {
+  width: 400px;
+  height: 250px;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.default-modal-cover .default-modal-container p {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.default-modal-cover .default-modal-container p,
+.default-modal-cover .default-modal-container span {
+  cursor: default;
+}
+.default-modal-cover .default-modal-container span {
+  margin: 1rem 0;
+  font-size: 6.5rem;
+}
+.default-modal-cover .default-modal-container .success {
+  color: #00E400;
+}
+.default-modal-cover .default-modal-container .error {
+  color: #FF0F0F;
+}/*# sourceMappingURL=defaultModal.css.map */

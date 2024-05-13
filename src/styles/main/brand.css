@@ -1,0 +1,17 @@
+.brand-container {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+.brand-container .brands {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand-container .brands .brand-img {
+  width: 150px;
+}/*# sourceMappingURL=brand.css.map */

@@ -1,0 +1,40 @@
+@import "../global/variables.scss";
+
+.blog-card-container {
+    height: 260px;
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+
+    img {
+        width: 300px;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .blog-card-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 1rem;
+
+        strong {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        span {
+            font-family: $highlight-font;
+            width: 80%;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: rgba(0, 0, 0, .6);
+            width: 70%;
+            font-weight: 500;
+        }
+    }
+}

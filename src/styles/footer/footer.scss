@@ -1,0 +1,130 @@
+@import "../global/variables.scss";
+
+.footer-container {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .inner-footer-container {
+        margin-top: 5rem;
+        width: 80%;
+        height: 70%;
+        // border: 1px solid black;
+
+        .main-footer {
+            width: 100%;
+            // border-bottom: 1px solid pink;
+            display: flex;
+            justify-content: space-between;
+
+            .brand {
+                h2 {
+                    margin-bottom: 3rem;
+                    font-weight: 600;
+                    font-size: 2rem;
+                }
+
+                span {
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                }
+
+                p {
+                    margin-top: 1rem;
+                    width: fit-content;
+                    font-weight: 500;
+                    border-bottom: 1px solid black;
+                    font-size: 1.5rem;
+                }
+            }
+
+            .footer-nav {
+                display: flex;
+                flex-direction: column;
+                row-gap: 1.5rem;
+
+                strong {
+                    font-weight: 500;
+                    font-size: 1.1rem;
+                }
+
+                p:nth-child(2) {
+                    margin-top: 0.5rem;
+                }
+
+                p {
+                    width: fit-content;
+                    color: rgba(0, 0, 0, .7);
+                    cursor: pointer;
+                }
+
+                p::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 1px;
+                    background: #000;
+                    transition: width .3s ease-in;
+                }
+
+                p:hover::after {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        .other-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8rem;
+            align-items: center;
+
+            p {
+                font-size: 0.9rem;
+                color: rgba(0, 0, 0, .7);
+                font-weight: 600;
+            }
+
+            .social {
+                display: flex;
+                column-gap: 3rem;
+
+                .social-item {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 0.5rem;
+
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            .term {
+                display: flex;
+                column-gap: 2rem;
+
+                p {
+                    cursor: pointer;
+                }
+
+                p::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 1px;
+                    background: #000;
+                    transition: width .3s ease-in;
+                }
+
+                p:hover::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.header-container {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  background: #F5EEEA;
+  z-index: 100;
+}
+.header-container .header {
+  width: 84%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+}
+.header-container .header a {
+  grid-column: 1/span 3;
+}
+.header-container .header a h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.header-container .header .main-nav {
+  grid-column: 4/span 6;
+  display: flex;
+  justify-content: space-around;
+}
+.header-container .header .main-nav a {
+  font-weight: 500;
+}
+.header-container .header .main-nav a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #000;
+  transition: width 0.3s ease-in;
+}
+.header-container .header .main-nav a:hover::after {
+  width: 100%;
+}
+.header-container .header .second-nav {
+  grid-column: 10/span 3;
+  display: flex;
+  justify-content: end;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+  align-items: center;
+}/*# sourceMappingURL=header.css.map */

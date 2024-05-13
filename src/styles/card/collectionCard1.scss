@@ -1,0 +1,34 @@
+@import "../global/variables.scss";
+
+.collection-card-container {
+    width: 100%;
+    height: 450px;
+    background: $collection-backgr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        width: 60%;
+        object-fit: cover;
+    }
+
+    .collection-card-content {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+
+        span {
+            width: 60%;
+            font-family: $highlight-font;
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+    }
+}

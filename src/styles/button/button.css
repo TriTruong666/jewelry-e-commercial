@@ -1,0 +1,14 @@
+.prim-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px 50px;
+  border: 2px solid black;
+  font-weight: 400;
+  box-shadow: inset 0 0 0 0 black;
+  transition: 0.5s;
+}
+
+.prim-btn:hover {
+  box-shadow: inset 400px 0 0 0 black;
+  color: #F5EEEA;
+}/*# sourceMappingURL=button.css.map */

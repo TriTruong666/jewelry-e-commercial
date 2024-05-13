@@ -1,0 +1,76 @@
+@import "../global/variables.scss";
+
+.dashboard-container {
+    width: 100%;
+    height: 100vh;
+    background: $dashboard-backgr;
+    display: flex;
+    position: relative;
+
+    .sidebar-container {
+        width: 5%;
+        height: 100%;
+        border-right: $thin-border;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            margin-top: 4rem;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .navigation-container {
+            width: 100%;
+            margin-top: 5rem;
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+
+            .nav-item {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-left: 5px solid transparent;
+                transition: .3s ease-in-out;
+
+                a {
+                    span {
+                        color: white;
+                        font-size: 2rem;
+                        padding: 10px;
+                        border-radius: 25px;
+                        margin-right: 5px;
+                        transition: .3s ease-in-out;
+                    }
+
+                    span:hover {
+                        background: rgba(255, 255, 255, .1);
+                    }
+                }
+            }
+
+            .nav-item:hover {
+                border-color: rgba(255, 255, 255, .8);
+            }
+        }
+    }
+
+    .main-index {
+        width: 95%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .inner-main {
+            width: 90%;
+            height: 93%;
+            border-radius: 20px;
+        }
+    }
+}
