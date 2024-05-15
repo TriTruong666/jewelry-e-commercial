@@ -20,12 +20,13 @@ const ProductModal = () => {
     description: "",
     countInStock: "",
     price: "",
+    title: "",
     material: [],
   });
   const [isFilled, setIsFilled] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [filledModal, setFilledModal] = useState(false);
-  const [duplicatedModal, setDuplicatedModal] = useState(false);
+  // const [duplicatedModal, setDuplicatedModal] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const [invalidModal, setInvalidModal] = useState(false);
   const [invalidInput, setInvalidInput] = useState(false);
@@ -153,15 +154,6 @@ const ProductModal = () => {
       ) : (
         <></>
       )}
-      {duplicatedModal ? (
-        <DefaultModal
-          logo="error"
-          mess="Product existed"
-          status="error"
-        ></DefaultModal>
-      ) : (
-        <></>
-      )}
       <div className="modal-container">
         <div className="inner-modal">
           <div className="modal-header">
@@ -202,6 +194,12 @@ const ProductModal = () => {
                 invalidInput={invalidInput}
               />
             </div>
+            <Input
+              handleOnChange={handleOnChange}
+              type="text"
+              label="Enter Title"
+              name="title"
+            />
             <div className="section-2">
               <Select handleOnChange={handleOnChange} />
               <Checkbox handleGetArray={handleGetArray} />

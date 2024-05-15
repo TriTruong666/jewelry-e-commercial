@@ -1,0 +1,90 @@
+@import "../global/variables.scss";
+
+.cover {
+    position: fixed;
+    width: calc(100vw + 5%);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    .delete-container {
+        position: absolute;
+        z-index: 2;
+        width: 28%;
+        height: 35%;
+        background: #000000;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .inner-container {
+            width: 85%;
+            height: 88%;
+            color: white;
+            scroll-behavior: smooth;
+            position: relative;
+
+            .modal-header {
+                margin-top: 1rem;
+                display: flex;
+                justify-content: space-between;
+
+                h2 {
+                    font-size: 1.7rem;
+                }
+
+                span {
+                    font-size: 2rem;
+                    cursor: pointer;
+                    height: fit-content;
+                    border-radius: 50%;
+                    padding: 3px;
+                }
+
+                span:hover {
+                    background: $hover2;
+
+                }
+
+                h2,
+                span {
+                    color: white;
+                }
+            }
+
+            .form-del {
+                display: flex;
+                flex-direction: column;
+                margin: 3.5rem 0;
+                row-gap: 3rem;
+                align-items: center;
+
+                .input {
+                    width: 100%;
+                }
+
+                button {
+                    width: 50%;
+                    color: black;
+                    font-weight: 700;
+                    padding: 10px 0;
+                    border-radius: 10px;
+                    background: rgba(255, 255, 255, 1);
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                }
+
+                button:hover {
+                    background: rgba(255, 255, 255, .7);
+                }
+            }
+        }
+    }
+}

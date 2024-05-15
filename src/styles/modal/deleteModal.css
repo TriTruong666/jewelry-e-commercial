@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.cover {
+  position: fixed;
+  width: calc(100vw + 5%);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+.cover .delete-container {
+  position: absolute;
+  z-index: 2;
+  width: 28%;
+  height: 35%;
+  background: #000000;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cover .delete-container .inner-container {
+  width: 85%;
+  height: 88%;
+  color: white;
+  scroll-behavior: smooth;
+  position: relative;
+}
+.cover .delete-container .inner-container .modal-header {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.cover .delete-container .inner-container .modal-header h2 {
+  font-size: 1.7rem;
+}
+.cover .delete-container .inner-container .modal-header span {
+  font-size: 2rem;
+  cursor: pointer;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  padding: 3px;
+}
+.cover .delete-container .inner-container .modal-header span:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.cover .delete-container .inner-container .modal-header h2,
+.cover .delete-container .inner-container .modal-header span {
+  color: white;
+}
+.cover .delete-container .inner-container .form-del {
+  display: flex;
+  flex-direction: column;
+  margin: 3.5rem 0;
+  row-gap: 3rem;
+  align-items: center;
+}
+.cover .delete-container .inner-container .form-del .input {
+  width: 100%;
+}
+.cover .delete-container .inner-container .form-del button {
+  width: 50%;
+  color: black;
+  font-weight: 700;
+  padding: 10px 0;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.cover .delete-container .inner-container .form-del button:hover {
+  background: rgba(255, 255, 255, 0.7);
+}/*# sourceMappingURL=deleteModal.css.map */

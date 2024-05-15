@@ -16,31 +16,17 @@
             display: flex;
             justify-content: space-between;
 
-            #delete,
-            #edit {
-                padding: 10px;
-                border: $thin-border;
-                border-radius: 50%;
-                color: white;
-                cursor: pointer;
-            }
-
-            #delete:hover,
-            #edit:hover {
-                background: rgba(255, 255, 255, .1);
-            }
-
             .other-btn {
                 display: flex;
                 align-items: center;
                 column-gap: 3rem;
 
                 .search-bar {
+                    width: 400px;
                     display: flex;
                     align-items: center;
-                    padding: 10px 20px;
-                    border: $thin-border;
-                    border-radius: 20px;
+                    padding: 8px 0;
+                    border-bottom: 2px solid rgba(255, 255, 255, .2);
 
                     input,
                     span,
@@ -50,6 +36,7 @@
 
                     input {
                         padding-left: 5px;
+                        width: 95%;
                     }
 
                     span {
@@ -78,11 +65,33 @@
                 display: flex;
                 flex-direction: column;
                 row-gap: 0.75rem;
+                align-items: center;
+                // justify-content: center;
+                width: 100%;
+                height: 500px;
+
+                .server-closed {
+                    margin: 5rem 0;
+                    color: rgba(255, 255, 255, .7);
+                }
+
+                .loader {
+                    width: 100%;
+                    height: 100%;
+                    margin: 5rem 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
 
                 tr {
-                    .id {
-                        cursor: pointer;
-                    }
+                    cursor: pointer;
+                    width: 100%;
+                    transition: $trans300ms;
+                }
+
+                tr:hover {
+                    background: rgba(255, 255, 255, .1);
                 }
             }
 
@@ -106,6 +115,22 @@
                     color: white;
                     background: rgba(0, 0, 0, .2);
 
+                }
+
+                .action {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: 3rem;
+
+                    span {
+                        cursor: pointer;
+                        transition: $trans300ms;
+                    }
+
+                    span:hover {
+                        transform: scale(1.2);
+                    }
                 }
 
                 th:nth-child(1),
