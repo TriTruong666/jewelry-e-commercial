@@ -44,7 +44,8 @@ const Dashboard = () => {
             <Outlet />
           </div>
         </div>
-        {showToast && <ToastContainer />}
+        <ToastContainer />
+        {/* {showToast && <ToastContainer />} */}
       </main>
     </>
   );

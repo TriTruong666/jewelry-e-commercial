@@ -5,6 +5,7 @@ import { toggleDelModal } from "../../redux/slices/deleteSlice";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as productService from "../../service/productService";
+import { Zoom, toast } from "react-toastify";
 const DeleteModal = () => {
   const [productId, setProductId] = useState("");
   const dispatch = useDispatch();
@@ -25,9 +26,31 @@ const DeleteModal = () => {
   const handleDeleteProduct = (e) => {
     e.preventDefault();
     if (mutation.error) {
-      alert("not found?");
+      toast.warning("Delete Failed !", {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
     } else if (!mutation.error) {
+      toast.success("Delete Success !", {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
       mutation.mutateAsync(productId);
+      handleToggleDelModal();
     }
   };
   //   func

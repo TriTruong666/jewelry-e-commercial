@@ -1,0 +1,23 @@
+.pagination-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination-container .pagination {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 2px;
+       column-gap: 2px;
+}
+.pagination-container .pagination .page {
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border: 1px solid white;
+}
+.pagination-container .pagination .active {
+  color: black;
+  background: white;
+}/*# sourceMappingURL=pagination.css.map */

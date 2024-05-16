@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import NavDash from "../../components/dashboard/dashboardNav";
 import AddButton from "../../components/button/addButton";
+import Pagination from "../../components/pagination/pagination";
+import List from "../../components/list/list";
 import "../../styles/dashboard/production.css";
 import { useQuery } from "@tanstack/react-query";
 import * as service from "../../service/productService";
@@ -10,48 +12,26 @@ import { Zoom, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { toggleDelModal } from "../../redux/slices/deleteSlice";
 import "react-toastify/dist/ReactToastify.css";
+
 const ProductionDash = () => {
   const [productData, setProductData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(7);
+  const [totalProducts, setTotalProducts] = useState(null);
   const [loadingData, setLoadingData] = useState(false);
   const [isServerClosed, setIsServerClosed] = useState(false);
+  const [isEmptyList, setIsEmptyList] = useState(false);
+  const [preventModal, setPreventModal] = useState(false);
   const query = useQuery({
-    queryKey: ["products"],
-    queryFn: service.getAllProducts,
+    queryKey: ["products", page, limit],
+    queryFn: () => service.getAllProducts(page, limit),
+    placeholderData: true,
     refetchOnWindowFocus: false,
   });
   // redux
   const dispatch = useDispatch();
-  const handleToggleDelModal = () => {
+  const handleToggleDelModal = (productId) => {
     dispatch(toggleDelModal());
-  };
-  useEffect(() => {
-    if (query.error) {
-      setIsServerClosed(true);
-    }
-    if (query.data) {
-      setIsServerClosed(false);
-      setProductData(query.data.result || []);
-      if (
-        query.isRefetching ||
-        query.isPending ||
-        query.isFetching ||
-        query.isLoading
-      ) {
-        setLoadingData(true);
-        setTimeout(() => {
-          setLoadingData(false);
-        }, 1000);
-      }
-    }
-  }, [
-    query.data,
-    query.isRefetching,
-    query.isPending,
-    query.isFetching,
-    query.isLoading,
-  ]);
-  // get product Id
-  const handleRowClick = (productId) => {
     navigator.clipboard
       .writeText(productId)
       .then(() => {
@@ -71,13 +51,60 @@ const ProductionDash = () => {
         });
       });
   };
+  // paginate
+  const getActivePage = (newPage) => {
+    setPage(newPage);
+  };
+  useEffect(() => {
+    if (query.error) {
+      setIsServerClosed(true);
+      setPreventModal(true);
+    }
+    if (query.data) {
+      setTotalProducts(query.data.totalProduct);
+      setIsEmptyList(false);
+      setPreventModal(false);
+      setIsServerClosed(false);
+      setProductData(query.data.result || []);
+      if (
+        query.isRefetching ||
+        query.isPending ||
+        query.isFetching ||
+        query.isLoading
+      ) {
+        setLoadingData(true);
+        setTimeout(() => {
+          setLoadingData(false);
+        }, 1000);
+      }
+    }
+    if (productData.length === 0 && query.data) {
+      setIsEmptyList(true);
+    } else {
+      setIsEmptyList(false);
+    }
+  }, [
+    query.data,
+    query.isRefetching,
+    query.isPending,
+    query.isFetching,
+    query.isLoading,
+    productData.length,
+    page,
+  ]);
+  // get product Id
   return (
     <>
       <NavDash name="Products Manager" />
       <div className="production-container">
         <div className="inner-production">
           <div className="buttons">
-            <AddButton className="addbtn" icon="add" name="Add product" />
+            <AddButton
+              className="addbtn"
+              icon="add"
+              name="Add product"
+              preventModal={preventModal}
+            />
             <div className="other-btn">
               <div className="search-bar">
                 <input type="text" placeholder="Search product" />
@@ -102,37 +129,29 @@ const ProductionDash = () => {
               ) : (
                 <></>
               )}
+              {isEmptyList ? (
+                <h2 className="server-closed">Product List Is Empty !!!</h2>
+              ) : (
+                <></>
+              )}
               {loadingData ? (
                 <div className="loader">
                   <ClipLoader size={70} color="#ffffff"></ClipLoader>
                 </div>
               ) : (
-                <>
-                  {productData.map((product) => (
-                    <tr
-                      key={product._id}
-                      onClick={() => handleRowClick(product._id)}
-                    >
-                      <td>{product.title}</td>
-                      <td>{product.name}</td>
-                      <td>{product.price}$</td>
-                      <td>{product.countInStock}</td>
-                      <td>{product.type}</td>
-                      <td className="action">
-                        <span
-                          onClick={handleToggleDelModal}
-                          className="material-symbols-outlined"
-                        >
-                          delete_forever
-                        </span>
-                        <span className="material-symbols-outlined">edit</span>
-                      </td>
-                    </tr>
-                  ))}
-                </>
+                <List
+                  productData={productData}
+                  handleToggleDelModal={handleToggleDelModal}
+                />
               )}
             </tbody>
           </table>
+          <Pagination
+            totalProducts={totalProducts}
+            limit={limit}
+            currentPage={page}
+            getActivePage={getActivePage}
+          />
         </div>
       </div>
     </>

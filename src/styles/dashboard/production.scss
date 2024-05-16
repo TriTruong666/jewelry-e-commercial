@@ -85,14 +85,9 @@
                 }
 
                 tr {
-                    cursor: pointer;
                     width: 100%;
-                    transition: $trans300ms;
                 }
 
-                tr:hover {
-                    background: rgba(255, 255, 255, .1);
-                }
             }
 
             tr {

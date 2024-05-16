@@ -10,9 +10,10 @@ export const createProduct = async (data) => {
     console.error("Error", err);
   }
 };
-export const getAllProducts = async () => {
+export const getAllProducts = async (page, limit) => {
   try {
-    const res = await axios.get("http://localhost:3000/v1/product/getProduct");
+    const url = `http://localhost:3000/v1/product/getProduct?page=${page}&limit=${limit}`;
+    const res = await axios.get(url);
     return res.data;
   } catch (err) {
     console.error("Error", err);
