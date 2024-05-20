@@ -5,9 +5,9 @@ const InputNumber = ({
   type,
   label,
   name,
+  defaultInput,
   handleConvertToNumber,
   invalidInput,
-  id,
 }) => {
   return (
     <div className="input">
@@ -17,6 +17,7 @@ const InputNumber = ({
         placeholder={label}
         name={name}
         onChange={handleConvertToNumber}
+        defaultValue={defaultInput || ""}
       />
     </div>
   );

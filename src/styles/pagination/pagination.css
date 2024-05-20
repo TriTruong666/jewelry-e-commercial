@@ -13,11 +13,17 @@
 .pagination-container .pagination .page {
   color: white;
   cursor: pointer;
-  font-size: 1.1rem;
-  padding: 10px 20px;
+  font-size: 1rem;
+  padding: 5px 15px;
   border: 1px solid white;
+}
+.pagination-container .pagination .page:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 .pagination-container .pagination .active {
   color: black;
   background: white;
+}
+.pagination-container .pagination .active:hover {
+  background: white !important;
 }/*# sourceMappingURL=pagination.css.map */

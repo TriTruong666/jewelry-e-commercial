@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { toggleModal } from "../../redux/slices/modalSlice";
-import { useDispatch } from "react-redux";
+import { toggleUpdateModal } from "../../redux/slices/updateSlice";
+import { useDispatch, useSelector } from "react-redux";
 import "../../styles/modal/addProduct.css";
 import Input from "../input/input";
 import InputNumber from "../input/inputNumber";
@@ -11,10 +11,15 @@ import Area from "../input/area";
 import * as productService from "../../service/productService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Zoom, toast } from "react-toastify";
-// import DefaultModal from "./defaulmodal";
-const ProductModal = () => {
+
+const UpdateModal = () => {
+  // redux
+  const dispatch = useDispatch();
+  const productID = useSelector((state) => state.productID.productID);
+  const reduxData = useSelector((state) => state.oneProductData.oneProductData);
   // states
-  const [formData, setFormData] = useState({
+  const [invalidInput, setInvalidInput] = useState(false);
+  const [updateData, setUpdateData] = useState({
     name: "",
     image: "",
     type: "",
@@ -24,30 +29,57 @@ const ProductModal = () => {
     title: "",
     material: [],
   });
-  const [isFilled, setIsFilled] = useState(false);
-  // const [duplicatedModal, setDuplicatedModal] = useState(false);
-  const [invalidInput, setInvalidInput] = useState(false);
-  // query
+  // mutation
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: productService.createProduct,
+    mutationFn: (variables) =>
+      productService.updateProductById(variables.id, variables.data),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["products"],
       });
     },
   });
-  // redux function
-  const dispatch = useDispatch();
-  const handleToggleModal = () => {
-    dispatch(toggleModal());
+  // func
+  const handleOnChange = (e) => {
+    setUpdateData({
+      ...updateData,
+      [e.target.name]: e.target.value,
+    });
   };
-  // handleForm
-  const handleOnSubmitForm = async (e) => {
+  const handleConvertToNumber = (e) => {
+    const value = e.target.value;
+    // Check if the value is a valid number
+    if (!isNaN(value)) {
+      setUpdateData({
+        ...updateData,
+        [e.target.name]: parseInt(value),
+      });
+      setInvalidInput(false);
+    } else {
+      setInvalidInput(true);
+    }
+  };
+  const handleGetImage = (url) => {
+    setUpdateData({
+      ...updateData,
+      image: url,
+    });
+  };
+  const handleGetArray = (checkedValues) => {
+    setUpdateData({
+      ...updateData,
+      material: checkedValues,
+    });
+  };
+  const handleToggleModal = () => {
+    dispatch(toggleUpdateModal());
+  };
+  const handleUpdateProduct = (e) => {
     try {
       e.preventDefault();
-      if (invalidInput === true) {
-        toast.warn("Invalid Input !", {
+      if (invalidInput) {
+        toast.warn("Invalid Input", {
           position: "top-right",
           autoClose: 2500,
           hideProgressBar: false,
@@ -58,8 +90,9 @@ const ProductModal = () => {
           theme: "dark",
           transition: Zoom,
         });
-      } else if (isFilled === false) {
-        toast.warn("Please input all fields !", {
+      } else if (!mutation.error) {
+        mutation.mutateAsync({ id: productID, data: updateData });
+        toast.success("Updated Success 😘", {
           position: "top-right",
           autoClose: 2500,
           hideProgressBar: false,
@@ -70,20 +103,7 @@ const ProductModal = () => {
           theme: "dark",
           transition: Zoom,
         });
-      } else if (!mutation.isError) {
         handleToggleModal();
-        toast.success("Added Success 😘", {
-          position: "top-right",
-          autoClose: 2500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          transition: Zoom,
-        });
-        mutation.mutateAsync(formData);
       } else {
         mutation.reset();
         handleToggleModal();
@@ -103,52 +123,18 @@ const ProductModal = () => {
       console.error(err);
     }
   };
-  // get data function
-  const handleOnChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handleConvertToNumber = (e) => {
-    const value = e.target.value;
-    // Check if the value is a valid number
-    if (!isNaN(value)) {
-      setFormData({
-        ...formData,
-        [e.target.name]: parseInt(value),
-      });
-      setInvalidInput(false);
-    } else {
-      setInvalidInput(true);
-    }
-  };
-  const handleGetArray = (checkedValues) => {
-    setFormData({
-      ...formData,
-      material: checkedValues,
-    });
-  };
-  const handleGetImage = (url) => {
-    setFormData({
-      ...formData,
-      image: url,
-    });
-  };
-  //
+  // useEffect
   useEffect(() => {
-    const isFormFilled =
-      Object.values(formData).every((value) => value !== "") &&
-      formData.material.length > 0;
-    setIsFilled(isFormFilled);
-  }, [formData]);
-
+    if (reduxData) {
+      setUpdateData(reduxData);
+    }
+  }, [reduxData]);
   return (
     <div className="cover">
       <div className="modal-container">
         <div className="inner-modal">
           <div className="modal-header">
-            <h2>Add Product</h2>
+            <h2>Update Product</h2>
             <span
               className="material-symbols-outlined"
               onClick={handleToggleModal}
@@ -161,52 +147,66 @@ const ProductModal = () => {
             className="form-input"
             autoComplete="off"
             spellCheck="false"
-            method="post"
           >
             <div className="section-1">
               <Input
-                handleOnChange={handleOnChange}
                 type="text"
                 label="Enter name"
                 name="name"
+                handleOnChange={handleOnChange}
+                defaultInput={reduxData && reduxData.name}
               />
               <InputNumber
-                handleConvertToNumber={handleConvertToNumber}
                 type="text"
                 label="Enter price ($)"
                 name="price"
-                invalidInput={invalidInput}
+                handleConvertToNumber={handleConvertToNumber}
+                defaultInput={reduxData && reduxData.price}
               />
               <InputNumber
-                handleConvertToNumber={handleConvertToNumber}
                 type="text"
                 label="In Stock"
                 name="countInStock"
-                invalidInput={invalidInput}
+                handleConvertToNumber={handleConvertToNumber}
+                defaultInput={reduxData && reduxData.countInStock}
               />
             </div>
             <Input
-              handleOnChange={handleOnChange}
               type="text"
               label="Enter Title"
               name="title"
+              handleOnChange={handleOnChange}
+              defaultInput={reduxData && reduxData.title}
             />
             <div className="section-2">
-              <Select handleOnChange={handleOnChange} />
-              <Checkbox handleGetArray={handleGetArray} />
+              <Select
+                handleOnChange={handleOnChange}
+                defaultInput={reduxData && reduxData.type}
+              />
+              <Checkbox
+                handleGetArray={handleGetArray}
+                defaultChecked={reduxData && reduxData.material}
+              />
             </div>
             <div className="section-3">
-              <InputImg name="image" handleGetImage={handleGetImage} />
-              <Area handleOnChange={handleOnChange} />
+              <InputImg
+                name="image"
+                handleGetImage={handleGetImage}
+                defaultInput={reduxData && reduxData.image}
+              />
+              <Area
+                handleOnChange={handleOnChange}
+                defaultInput={reduxData && reduxData.description}
+              />
             </div>
             <div className="confirm">
               <span className="confirm-btn" onClick={handleToggleModal}>
                 Cancel
               </span>
               <button
-                className={isFilled ? "confirm-btn" : "confirm-btn disable"}
+                className={invalidInput ? "confirm-btn" : "confirm-btn disable"}
                 type="submit"
-                onClick={handleOnSubmitForm}
+                onClick={handleUpdateProduct}
               >
                 Confirm
               </button>
@@ -217,4 +217,4 @@ const ProductModal = () => {
     </div>
   );
 };
-export default ProductModal;
+export default UpdateModal;

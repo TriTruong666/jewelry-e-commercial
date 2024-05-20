@@ -2,13 +2,13 @@ import Input from "../input/input";
 import "../../styles/modal/deleteModal.css";
 import { useDispatch } from "react-redux";
 import { toggleDelModal } from "../../redux/slices/deleteSlice";
-import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 import * as productService from "../../service/productService";
 import { Zoom, toast } from "react-toastify";
 const DeleteModal = () => {
-  const [productId, setProductId] = useState("");
   const dispatch = useDispatch();
+  const productID = useSelector((state) => state.productID.productID);
   //   redux
   const handleToggleDelModal = () => {
     dispatch(toggleDelModal());
@@ -49,14 +49,11 @@ const DeleteModal = () => {
         theme: "dark",
         transition: Zoom,
       });
-      mutation.mutateAsync(productId);
+      mutation.mutateAsync(productID);
       handleToggleDelModal();
     }
   };
   //   func
-  const handleOnChange = (e) => {
-    setProductId(e.target.value);
-  };
   return (
     <div className="cover">
       <div className="delete-container">
@@ -70,20 +67,11 @@ const DeleteModal = () => {
               close
             </span>
           </div>
-          <form
-            action=""
-            className="form-del"
-            autoComplete="off"
-            spellCheck="false"
-          >
-            <Input
-              type="text"
-              label="Enter ID to delete..."
-              name="id"
-              handleOnChange={handleOnChange}
-            />
+          <div className="delete">
+            <span>Are you sure to delete product:</span>
+            <p>#{productID}</p>
             <button onClick={handleDeleteProduct}>Delete</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>

@@ -7,10 +7,11 @@ import "../../styles/dashboard/production.css";
 import { useQuery } from "@tanstack/react-query";
 import * as service from "../../service/productService";
 import ClipLoader from "react-spinners/ClipLoader";
-import { showToast } from "../../redux/slices/toastSlice";
-import { Zoom, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { toggleDelModal } from "../../redux/slices/deleteSlice";
+import { toggleUpdateModal } from "../../redux/slices/updateSlice";
+import { setProductId } from "../../redux/slices/productID";
+import { setOneProductData } from "../../redux/slices/oneProductData";
 import "react-toastify/dist/ReactToastify.css";
 
 const ProductionDash = () => {
@@ -31,25 +32,16 @@ const ProductionDash = () => {
   // redux
   const dispatch = useDispatch();
   const handleToggleDelModal = (productId) => {
+    dispatch(setProductId(productId));
     dispatch(toggleDelModal());
-    navigator.clipboard
-      .writeText(productId)
-      .then(() => {
-        dispatch(showToast());
-      })
-      .then(() => {
-        toast.success("Copied product ID !", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          transition: Zoom,
-        });
-      });
+  };
+  const handleToggleUpdateModal = (productId) => {
+    const productToUpdate = productData.find(
+      (product) => product._id === productId
+    );
+    dispatch(setProductId(productId));
+    dispatch(setOneProductData(productToUpdate));
+    dispatch(toggleUpdateModal());
   };
   // paginate
   const getActivePage = (newPage) => {
@@ -62,6 +54,9 @@ const ProductionDash = () => {
     }
     if (query.data) {
       setTotalProducts(query.data.totalProduct);
+      if (totalProducts < 8) {
+        setPage(1);
+      }
       setIsEmptyList(false);
       setPreventModal(false);
       setIsServerClosed(false);
@@ -91,6 +86,7 @@ const ProductionDash = () => {
     query.isLoading,
     productData.length,
     page,
+    totalProducts,
   ]);
   // get product Id
   return (
@@ -142,6 +138,7 @@ const ProductionDash = () => {
                 <List
                   productData={productData}
                   handleToggleDelModal={handleToggleDelModal}
+                  handleToggleUpdateModal={handleToggleUpdateModal}
                 />
               )}
             </tbody>

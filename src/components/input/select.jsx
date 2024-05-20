@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/input/input.css";
 
-const Select = ({ handleOnChange }) => {
+const Select = ({ handleOnChange, defaultInput }) => {
   return (
     <div className="select-container">
       <select
@@ -9,6 +9,7 @@ const Select = ({ handleOnChange }) => {
         name="type"
         id="type"
         onChange={handleOnChange}
+        defaultValue={defaultInput || ""}
       >
         <option value="">Type of product</option>
         <option value="Bracelet">Bracelet</option>

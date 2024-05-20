@@ -59,30 +59,38 @@
                 }
             }
 
-            .form-del {
+            .delete {
                 display: flex;
                 flex-direction: column;
                 margin: 3.5rem 0;
-                row-gap: 3rem;
+                row-gap: 1.25rem;
                 align-items: center;
 
                 .input {
                     width: 100%;
                 }
 
+                p {
+                    color: #ba1e1e;
+                    font-weight: 700;
+                }
+
                 button {
+                    margin-top: 1rem;
                     width: 50%;
-                    color: black;
                     font-weight: 700;
                     padding: 10px 0;
                     border-radius: 10px;
-                    background: rgba(255, 255, 255, 1);
+                    color: black;
+                    background: white;
                     font-size: 0.9rem;
                     cursor: pointer;
+                    transition: $trans300ms;
                 }
 
                 button:hover {
-                    background: rgba(255, 255, 255, .7);
+                    background: #cf4238;
+                    color: white;
                 }
             }
         }

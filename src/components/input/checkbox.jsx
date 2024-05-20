@@ -1,16 +1,7 @@
 import "../../styles/input/input.css";
 import { useState, useEffect } from "react";
-const Checkbox = ({ handleGetArray }) => {
-  const [checkedValues, setCheckedValues] = useState([]);
-
-  // const handleCheckboxChange = (e) => {
-  //   const { value, checked } = e.target;
-  //   if (checked) {
-  //     setCheckedValues([...checkedValues, value]);
-  //   } else {
-  //     setCheckedValues(checkedValues.filter((check) => check !== value));
-  //   }
-  // };
+const Checkbox = ({ handleGetArray, defaultChecked = [] }) => {
+  const [checkedValues, setCheckedValues] = useState(defaultChecked);
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
     setCheckedValues((prevCheckedValues) => {
@@ -36,6 +27,7 @@ const Checkbox = ({ handleGetArray }) => {
             name="material"
             value="Diamond"
             onChange={handleCheckboxChange}
+            checked={checkedValues.includes("Diamond")}
           />
           <label htmlFor="diamond">Diamond</label>
         </div>
@@ -46,6 +38,7 @@ const Checkbox = ({ handleGetArray }) => {
             name="material"
             value="Gold"
             onChange={handleCheckboxChange}
+            checked={checkedValues.includes("Gold")}
           />
           <label htmlFor="gold">Gold</label>
         </div>
@@ -56,6 +49,7 @@ const Checkbox = ({ handleGetArray }) => {
             name="material"
             value="Silver"
             onChange={handleCheckboxChange}
+            checked={checkedValues.includes("Silver")}
           />
           <label htmlFor="silver">Silver</label>
         </div>

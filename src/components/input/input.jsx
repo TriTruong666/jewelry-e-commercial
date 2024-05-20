@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/input/input.css";
-const Input = ({ type, label, name, handleOnChange }) => {
+const Input = ({ type, label, name, defaultInput, handleOnChange }) => {
   return (
     <div className="input">
       <input
@@ -9,6 +9,7 @@ const Input = ({ type, label, name, handleOnChange }) => {
         placeholder={label}
         name={name}
         onChange={handleOnChange}
+        defaultValue={defaultInput || ""}
       />
     </div>
   );

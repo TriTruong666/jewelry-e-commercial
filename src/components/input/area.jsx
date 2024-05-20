@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/input/input.css";
-const Area = ({ handleOnChange }) => {
+const Area = ({ handleOnChange, defaultInput }) => {
   return (
     <div className="area-container">
       <textarea
@@ -9,6 +9,7 @@ const Area = ({ handleOnChange }) => {
         id="des"
         placeholder="Product description"
         onChange={handleOnChange}
+        defaultValue={defaultInput || ""}
       ></textarea>
     </div>
   );

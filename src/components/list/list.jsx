@@ -1,7 +1,8 @@
-import React from "react";
-// import "../../styles/dashboard/production.css";
-
-const List = ({ productData, handleToggleDelModal }) => {
+const List = ({
+  productData,
+  handleToggleDelModal,
+  handleToggleUpdateModal,
+}) => {
   return (
     <>
       {productData.map((product) => (
@@ -18,7 +19,12 @@ const List = ({ productData, handleToggleDelModal }) => {
             >
               delete_forever
             </span>
-            <span className="material-symbols-outlined">edit</span>
+            <span
+              className="material-symbols-outlined"
+              onClick={() => handleToggleUpdateModal(product._id)}
+            >
+              edit
+            </span>
           </td>
         </tr>
       ))}

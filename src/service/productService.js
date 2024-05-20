@@ -29,3 +29,14 @@ export const deleteProductById = async (id) => {
     console.error("Error", err);
   }
 };
+export const updateProductById = async (id, data) => {
+  try {
+    const res = await axios.put(
+      `http://localhost:3000/v1/product/update/${id}`,
+      data
+    );
+    return res.data;
+  } catch (err) {
+    console.error("Error", err);
+  }
+};

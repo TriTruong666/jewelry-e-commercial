@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import "../../styles/input/input.css";
 import Resizer from "react-image-file-resizer";
 
-const InputImg = ({ name, handleGetImage }) => {
-  const [preview, setPreview] = useState(null);
+const InputImg = ({ name, handleGetImage, defaultInput }) => {
+  const [preview, setPreview] = useState(defaultInput || null);
+
+  useEffect(() => {
+    setPreview(defaultInput);
+  }, [defaultInput]);
 
   const resizeFile = (file) => {
     Resizer.imageFileResizer(

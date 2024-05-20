@@ -1,14 +1,14 @@
 // src/redux/slices/modalSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  showProductModal: false,
+  isToggleModal: false,
 };
 const modalSlice = createSlice({
-  name: "modal",
+  name: "addModal",
   initialState,
   reducers: {
     toggleModal: (state) => {
-      state.showProductModal = !state.showProductModal;
+      state.isToggleModal = !state.isToggleModal;
     },
   },
 });

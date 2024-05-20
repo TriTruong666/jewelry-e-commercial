@@ -12,14 +12,22 @@
         .page {
             color: white;
             cursor: pointer;
-            font-size: 1.1rem;
-            padding: 10px 20px;
+            font-size: 1rem;
+            padding: 5px 15px;
             border: 1px solid white;
+        }
+
+        .page:hover {
+            background: rgba(255, 255, 255, .2);
         }
 
         .active {
             color: black;
             background: white;
+        }
+
+        .active:hover {
+            background: white !important;
         }
     }
 }
