@@ -11,7 +11,7 @@ import Footer from "./components/footer/footer";
 
 function App() {
   return (
-    <>
+    <div className="main-container">
       <Header />
       <Hero />
       <Brand />
@@ -21,7 +21,7 @@ function App() {
       <Blog />
       <Subcribe />
       <Footer />
-    </>
+    </div>
   );
 }
 
